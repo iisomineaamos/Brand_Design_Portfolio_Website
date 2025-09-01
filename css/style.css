@@ -1,0 +1,1894 @@
+/* css/style.css */
+
+/* --- 1. Global Styles & Variables --- */
+:root {
+    --green: #2d6e54;
+    --mild-yellow: #fdc66f;
+    --mild-pink: #e19ac3;
+    --cool-milky-white: #fff6f0;
+    --dark-text: #1a1a1a;
+    --body-text: #333333;
+    --font-primary: 'Rubik', sans-serif;
+    --container-width: 1140px;
+    --section-padding: 6rem 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--cool-milky-white);
+    color: var(--body-text);
+    line-height: 1.7;
+
+}
+
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    color: var(--dark-text);
+    line-height: 1.2;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.75rem; }
+
+p { margin-bottom: 1rem; }
+a { color: var(--green); text-decoration: none; transition: color 0.3s ease; }
+a:hover { color: var(--mild-pink); }
+img { max-width: 100%; display: block; }
+.text-center { text-align: center; }
+
+/* --- 2. Header & Navigation --- */
+.site-header {
+    background: transparent;
+    padding: 1rem 0;
+    position: fixed; /* Changed from sticky */
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* This class will hide the header */
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.site-header.scrolled {
+    background-color: rgba(255, 246, 240, 0.9);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--green);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav ul a {
+    color: var(--dark-text);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.main-nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--mild-pink);
+    transition: width 0.3s ease;
+}
+
+.main-nav ul a:hover::after {
+    width: 100%;
+}
+
+
+/* --- 3. Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+    background-color: var(--green);
+    color: var(--cool-milky-white);
+}
+.btn-primary:hover {
+    background-color: #255a46; /* Slightly darker green */
+    color: var(--cool-milky-white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--green);
+    border: 2px solid var(--green);
+}
+.btn-secondary:hover {
+    background-color: var(--green);
+    color: var(--cool-milky-white);
+}
+
+/* --- 4. Page Sections --- */
+section {
+    padding: var(--section-padding);
+}
+
+.hero, .page-hero {
+    padding: 8rem 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-hero { min-height: auto; padding: 6rem 0; }
+
+.hero h1, .page-hero h1 {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+}
+.subheading {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+.hero-buttons { display: flex; justify-content: center; gap: 1rem; }
+.section-title { margin-bottom: 1rem; }
+.section-intro { margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;}
+
+
+/* --- 5. Project Grids & Cards --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.project-card {
+    display: block;
+    background-color: white; /* Give the card a background */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Important for the hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* This wrapper will control the image size and shape */
+.card-image-wrapper {
+    overflow: hidden;
+    /* This creates the 4:3 aspect ratio */
+    aspect-ratio: 4 / 3;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Make the image zoom slightly on hover */
+.project-card:hover .card-image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* This is our new text area */
+.card-text-content {
+    padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.card-text-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+    font-size: 1.3rem; /* Add this line to reduce the size */
+}
+
+.card-text-content p {
+    color: var(--body-text);
+    font-size: 0.7rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* --- 6. Specific Page Sections --- */
+/* About Preview */
+.about-preview {
+    background-color: var(--mild-yellow);
+    text-align: center;
+}
+.about-preview h2 {
+    max-width: 600px;
+    margin: 0 auto 1rem;
+}
+.about-preview p {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Beyond Design */
+.beyond-design {
+    padding: 4rem 0;
+    background-color: transparent;
+}
+.fun-fact-heading {
+    color: var(--mild-pink);
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.beyond-design p {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Services Page */
+.services-list .container {
+    max-width: 800px;
+}
+.service-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 2rem 0;
+}
+.service-item:last-child {
+    border-bottom: none;
+}
+.service-item h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Updated CSS for Service Packages --- */
+
+.services-packages {
+    background-color: var(--cool-milky-white);
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 4rem 2rem; /* Increased row gap to make space for overlapping title */
+    align-items: stretch;
+}
+
+.package-card {
+    position: relative; /* This is crucial for positioning the title card */
+    padding-top: 2rem; /* Make space at the top for the overlap */
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-10px); /* This is our subtle effect! */
+}
+
+/* This is the main card holding the description and price */
+.package-content {
+    background: white;
+    padding: 4rem 2rem 2.5rem; /* More top padding to not get hidden by title */
+    border-radius: 8px; /* The requested curve */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    height: 100%; /* Makes all cards equal height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* This is the new overlapping title card */
+.package-card h3 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--mild-yellow);
+    color: var(--dark-text);
+    padding: 0.75rem 2rem;
+    border-radius: 8px; /* Curved pill shape */
+    font-size: 1.25rem;
+    z-index: 2; /* Ensures it sits on top */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* Prevents long titles from wrapping */
+    margin-bottom: 0;
+}
+
+.package-content .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 0.5rem;
+}
+
+.package-content .description {
+    font-size: 0.9rem;
+    color: var(--body-text);
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Pushes the list down so button aligns at bottom */
+}
+
+.package-content ul {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.package-content ul li {
+    margin-bottom: 0.75rem;
+}
+
+.package-content .btn {
+    width: 100%;
+}
+
+
+/* --- Styles for the Featured Card --- */
+.package-card.featured {
+    transform: scale(1.05); /* Make it stand out */
+}
+.package-card.featured:hover {
+    transform: scale(1.05) translateY(-10px); /* Keep hover effect */
+}
+
+.package-card.featured .package-content {
+    background: var(--green);
+    color: var(--cool-milky-white);
+}
+
+.package-card.featured h3 {
+    background-color: var(--mild-pink); /* Different color for featured title */
+}
+
+.package-card.featured .price,
+.package-card.featured .description,
+.package-card.featured ul {
+    color: white;
+}
+
+.package-card.featured .btn-primary {
+    background-color: var(--mild-yellow);
+    color: var(--dark-text);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 50px; /* Position relative to the main card */
+    right: 10px;
+    background: var(--mild-pink);
+    color: var(--dark-text);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 3;
+    transform: rotate(15deg);
+}
+
+/* --- New CSS for Education Section on Services Page --- */
+
+.education-section {
+    padding-top: 8rem;
+}
+
+.education-intro {
+    max-width: 750px;
+    margin: 0 auto 4rem; /* Adds space between intro and cards */
+}
+
+.education-intro h2 {
+    margin-bottom: 1rem;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* On larger screens, display cards side-by-side */
+@media(min-width: 992px) {
+    .education-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.education-card {
+    position: relative; /* Crucial for layering text over the image */
+    border-radius: 8px;
+    overflow: hidden; /* Keeps the image inside the curved border */
+    min-height: 400px;
+    display: flex; /* Helps with alignment */
+    color: var(--cool-milky-white);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* The background image */
+.education-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the card without stretching */
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.education-card:hover img {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+/* The text content overlay */
+.card-content {
+    position: relative;
+    z-index: 2; /* Sits on top of the image */
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Aligns text to the bottom */
+    
+    /* This creates the dark, semi-transparent background for readability */
+    background: linear-gradient(to top, rgba(45, 110, 84, 0.9) 0%, rgba(45, 110, 84, 0.3) 100%);
+}
+
+.card-content h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.card-content p {
+    color: rgba(255, 246, 240, 0.9); /* Milky white with slight transparency */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* --- New CSS for Brand Diagram --- */
+
+.brand-diagram-section {
+    background-color: #f8f0e8; /* Matches testimonials bg for flow */
+}
+
+.brand-diagram {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* This styles the main nested boxes (Brand and Brand Elements) */
+.diagram-level {
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 3rem 1.5rem 1.5rem; /* More padding at top for label */
+    position: relative;
+    margin-top: 1rem;
+}
+
+/* This styles the labels that sit on the border */
+.level-label {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the label on the border */
+    background-color: #f8f0e8; /* Must match the section background */
+    padding: 0 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
+}
+
+/* Styling for the outermost BRAND box */
+.brand-container {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+/* Styling for the inner ELEMENTS box */
+.elements-container {
+    border-color: var(--mild-pink);
+    color: var(--mild-pink);
+    margin: 1rem;
+}
+
+/* The grid that holds the individual element boxes */
+.elements-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+/* Styling for the small boxes like 'Logo', 'Colors', etc. */
+.element-box {
+    background-color: rgba(45, 110, 84, 0.1); /* Light green */
+    color: var(--green);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Special style for the Logo to make it stand out */
+.element-box.logo {
+    background-color: var(--mild-yellow);
+    color: var(--dark-text);
+    font-weight: 700;
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments for the diagram */
+@media(max-width: 768px) {
+    .diagram-level {
+        padding: 3rem 1rem 1rem;
+    }
+    .elements-container {
+        margin: 0;
+    }
+    .level-label {
+        font-size: 0.8rem;
+    }
+}
+/* This existing CSS already handles the review columns */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* This is for mobile */
+    gap: 2rem;
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+/* This media query switches to 2 columns on screens wider than 768px */
+@media(min-width: 768px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Styles the final "Other Projects" showcase section */
+.other-projects {
+    background-color: var(--cool-milky-white);
+    padding: var(--section-padding);
+    border-radius: 40px 40px 0 0; /* Creates the top curve you wanted */
+    margin-top: -30px; /* Pulls the section up slightly to overlap */
+    position: relative;
+    z-index: 5; /* Ensures it sits on top of the section before it */
+}
+
+/* Project Case Study Page */
+/* --- New CSS for Project Intro Section --- */
+
+.project-intro {
+    padding-bottom: 1.5rem; /* Reduced from the default 6rem */
+    text-align: center;
+}
+
+.project-intro .container {
+    max-width: 800px;
+}
+.project-intro h1 {
+    font-size: 2.5rem; /* This matches your other h2 headings */
+    margin-bottom: 0.5rem;
+}
+
+.project-tagline {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 3rem; /* Adds space below the description */
+}
+
+/* We'll make the new details section a single row */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 2rem;
+}
+.details-grid .detail-item {
+    padding-bottom: 0;
+}
+.details-grid .detail-item:last-child {
+    padding-bottom: 0;
+}
+
+
+/* Section 2 & 6: Full-Width Images */
+.project-image-full img {
+    width: 100%;
+    display: block; /* Removes tiny space below image */
+}
+
+
+/* Section 4: Logo Showcase */
+.project-logo-showcase {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #f8f0e8;
+}
+.project-logo-showcase .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+@media(min-width: 768px) {
+    .project-logo-showcase .container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.logo-text h2 {
+    /* Adjusted font size to be more consistent with other section titles */
+    font-size: 2.5rem; /* This matches the h2 in .project-strategy and .brand-substance */
+    line-height: 1;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+}
+.logo-text p {
+    /* Adjusted font size to be consistent with body text in .brand-substance */
+    font-size: 1rem; /* This matches the paragraph text in .substance-item */
+    max-width: 400px;
+}
+.logo-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo-visual img {
+    max-width: 100%;
+    /* This is the subtle floating animation effect */
+    animation: float-effect 6s ease-in-out infinite;
+}
+
+/* Keyframes for the floating animation */
+@keyframes float-effect {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.detail-item h4 {
+    color: var(--mild-pink);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.detail-item p { margin-bottom: 0; }
+.project-story { padding-bottom: 0; }
+.story-section { max-width: 800px; margin: 0 auto 3rem; }
+.image-grid-10 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.image-grid-10 img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.back-to-portfolio {
+    padding: 4rem 0;
+}
+
+/* --- 7. Footer --- */
+.site-footer {
+    background-color: var(--green);
+    color: rgba(255, 246, 240, 0.8);
+    padding: 6rem 0 2rem;
+   
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+.footer-col h4 {
+    color: var(--cool-milky-white);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Column 1: Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 246, 240, 0.8);
+}
+.footer-links a:hover {
+    color: var(--mild-yellow);
+}
+
+/* Column 2: Socials */
+.footer-socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-socials a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(255, 246, 240, 0.5);
+    border-radius: 20%;
+    color: var(--cool-milky-white);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background-color: var(--mild-pink);
+    border-color: var(--mild-pink);
+}
+
+/* Column 3: Actions & Newsletter */
+.btn-full-width {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.newsletter-heading {
+    margin-top: 1.5rem; /* Adds space above the heading */
+}
+
+.newsletter-form-footer {
+    display: flex;
+    border: 2px solid rgba(255, 246, 240, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.newsletter-form-footer input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    color: white;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+}
+
+.newsletter-form-footer input::placeholder {
+    color: rgba(255, 246, 240, 0.6);
+}
+
+.newsletter-form-footer input:focus {
+    outline: none;
+}
+
+.newsletter-form-footer button {
+    background-color: var(--mild-yellow);
+    color: var(--dark-text);
+    border: none;
+    padding: 0 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form-footer button:hover {
+    background-color: #fdd48f;
+}
+
+
+/* Copyright Area */
+.copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-socials {
+        justify-content: center;
+    }
+}
+
+/* --- 8. Animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 9. Responsive --- */
+@media (max-width: 992px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.25rem; }
+}
+
+@media (max-width: 768px) {
+    html { font-size: 15px; }
+    h1 { font-size: 2.5rem; }
+    section { padding: 4rem 0; }
+    .hero, .page-hero { padding: 6rem 0 4rem; }
+
+    .main-nav ul {
+        /* Basic mobile menu setup - can be enhanced with JS */
+        display: none; 
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* --- New CSS for Trust-Builder Card --- */
+
+.trust-builder-section {
+    padding: 2rem 0;
+    background-color: #f8f0e8; /* Matches the testimonials bg color */
+}
+
+.trust-card {
+    background-color: var(--green);
+    color: var(--cool-milky-white);
+    padding: 3rem;
+    border-radius: 8px; /* The curve you wanted */
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(45, 110, 84, 0.2);
+}
+
+.trust-card h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.trust-card p {
+    color: rgba(255, 246, 240, 0.9);
+    margin-bottom: 0;
+    line-height: 1.8;
+}
+
+/* --- New CSS for Full-Width Featured Project --- */
+
+/* .featured-project-fullwidth {
+    padding-bottom: 1.5rem;
+} */
+
+.featured-project-link {
+    display: block;
+    position: relative; /* This is crucial for positioning the overlay */
+    line-height: 0; /* Removes extra space below the image */
+}
+
+.featured-project-link img {
+    width: 100%;
+    height: 550px; /* You can adjust this height */
+    object-fit: cover; /* This is the magic! It covers the area without stretching */
+}
+
+/* The overlay that contains the text */
+.overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Centering the text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgba(45, 110, 84, 0.7); /* Dark green overlay */
+    color: white;
+    
+    /* The hover effect */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.featured-project-link:hover .overlay-content {
+    opacity: 1; /* The overlay fades in on hover */
+}
+
+.overlay-content h3 {
+    color: white;
+    font-size: 2.5rem;
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+.overlay-content p {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+    transition-delay: 0.1s; /* The text appears slightly after the overlay */
+}
+
+/* When you hover, the text slides up into view */
+.featured-project-link:hover h3,
+.featured-project-link:hover p {
+    transform: translateY(0);
+}
+
+/* We still need to adjust the padding of the main grid so it's not too close */
+.portfolio-grid-full {
+    padding-top: 6rem;
+}
+
+/* We need to adjust the padding of the main grid so it's not too close */
+.portfolio-grid-full {
+    padding-top: 6rem;
+}
+/* --- New CSS for Call to Action (CTA) Section --- */
+
+.cta-section {
+    background-color: var(--mild-yellow); /* Using one of your brand colors */
+    padding: 4rem 0;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: space-between; /* Pushes items to opposite ends */
+    align-items: center;
+    gap: 2rem; /* Adds space between items on smaller screens */
+}
+
+.cta-text h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta-text p {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    color: var(--body-text);
+    padding-bottom: 1.5rem;
+}
+
+/* On mobile, stack the text and button vertically */
+@media (max-width: 768px) {
+    .cta-container {
+        flex-direction: column; /* Stacks items */
+        text-align: center;
+    }
+}
+
+/* --- New CSS for Portfolio Socials Section --- */
+
+.portfolio-socials {
+    background-color: #f8f0e8; /* Light bg to separate it from other sections */
+    padding: var(--section-padding);
+}
+
+.socials-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.socials-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.socials-text p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--mild-pink);
+    margin: 0;
+}
+
+.socials-visuals {
+    text-align: center;
+}
+
+.socials-image-grid {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.socials-image-grid a {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.socials-image-grid a:hover {
+    transform: scale(1.05);
+}
+
+.socials-image-grid img {
+    width: 120px; /* Controls the size of the image boxes */
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .socials-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+/* Override for the main footer button color for let's work together */
+.footer-main-action a.btn-primary {
+    background-color: var(--mild-yellow) !important;
+    color: var(--dark-text) !important;
+}
+
+/* --- CSS for Standalone Form Pages --- */
+
+.enquiry-form-section {
+    padding: var(--section-padding);
+}
+
+.contact-form-standalone {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form-standalone input,
+.contact-form-standalone textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: #fff;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+}
+
+.contact-form-standalone button {
+    align-self: flex-start; /* Aligns button to the left */
+}
+
+/* --- New CSS for Next Steps CTA Section --- */
+
+.next-steps-cta {
+    background-color: var(--mild-pink);
+    padding: var(--section-padding);
+}
+
+.cta-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* Allows buttons to wrap on small screens */
+    margin-top: 2rem;
+}
+
+/* --- New CSS for Shop Page Hero Decorative Images --- */
+
+/* First, we must allow the hero container to be a positioning context */
+.page-hero .container {
+    position: relative;
+}
+
+.hero-deco-image {
+    position: absolute; /* Allows us to position the images freely */
+    border-radius: 8px;
+    z-index: -1; /* Puts the images behind the text */
+    opacity: 0.8;
+}
+
+/* Positioning for the top-left image */
+.deco-image-1 {
+    top: -2rem;
+    left: 2rem;
+    transform: rotate(-15deg);
+}
+
+/* Positioning for the bottom-right image */
+.deco-image-2 {
+    bottom: -2rem;
+    right: 2rem;
+    transform: rotate(15deg);
+}
+
+/* Hide the decorative images on smaller mobile screens to keep it clean */
+@media (max-width: 768px) {
+    .hero-deco-image {
+        display: none;
+    }
+}
+/* --- New CSS for Shop CTA Button --- */
+
+.shop-cta-section {
+    padding-bottom: 4rem; /* Adds space between the button and the product grid */
+}
+
+/* --- New CSS for Product Category Sections on Shop Page --- */
+
+.product-category-section {
+    padding-bottom: var(--section-padding);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.section-header h2 {
+    margin-bottom: 0;
+}
+
+/* --- New CSS for Header Enquire Button --- */
+
+/* 1. Creates the new yellow button style */
+.btn-accent {
+    background-color: var(--mild-yellow);
+    color: var(--dark-text) !important; /* Use !important to override nav link color */
+}
+.btn-accent:hover {
+    background-color: #fdd48f; /* Slightly lighter yellow for hover */
+}
+
+/* 2. Adjusts padding for any button placed in the main navigation */
+.main-nav .btn {
+    padding: 0.5rem 1.5rem;
+}
+
+/* 3. Removes the underline hover effect from buttons in the navigation */
+.main-nav a.btn::after {
+    display: none;
+}
+
+/* --- New CSS for What's Next Section --- */
+
+.what-next-section {
+    padding: var(--section-padding);
+    background-color: var(--cool-milky-white);
+}
+
+.next-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.next-step-card {
+    border: 2px solid rgba(45, 110, 84, 0.1); /* Light green border */
+    border-radius: 15px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.next-step-card h3 {
+    margin-bottom: 1rem;
+}
+
+.next-step-card p {
+    flex-grow: 1; /* Ensures buttons align at the bottom */
+    margin-bottom: 2rem;
+}
+
+/* Responsive layout for mobile */
+@media (max-width: 992px) {
+    .next-steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- New CSS for About Page --- */
+
+/* Section 1: Hero */
+.about-hero {
+    padding: var(--section-padding);
+}
+.about-hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+@media(min-width: 992px) {
+    .about-hero-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+.about-hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+.overlapping-images {
+    position: relative;
+    min-height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.primary-image, .secondary-image {
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.primary-image {
+    position: relative;
+    z-index: 2;
+}
+.secondary-image {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    transform: rotate(-10deg);
+}
+
+
+/* Section 2: Two-Column Text */
+.about-me-text {
+    padding-bottom: var(--section-padding);
+}
+.about-me-text h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.two-column-layout {
+    column-count: 1;
+    column-gap: 3rem;
+}
+@media(min-width: 768px) {
+    .two-column-layout {
+        column-count: 2;
+    }
+}
+
+/* Section 3: Philosophy */
+.my-philosophy {
+    padding: var(--section-padding);
+    background-color: #f8f0e8;
+}
+.philosophy-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+@media(min-width: 992px) {
+    .philosophy-content {
+        grid-template-columns: 1.2fr 1fr;
+    }
+}
+.philosophy-text ul {
+    list-style: none;
+    padding: 0;
+}
+.philosophy-text li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.philosophy-text li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+}
+.philosophy-image img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* Section 4: Beyond Design Expanded */
+.beyond-design-expanded {
+    background-color: var(--mild-yellow);
+    padding: var(--section-padding);
+}
+.journey-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+.journey-image-grid img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* --- New CSS for Project Page (Portfolio Template) --- */
+
+/* Section: Brand Substance */
+.brand-substance {
+    padding: var(--section-padding);
+}
+
+.brand-substance h2 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.substance-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .substance-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .substance-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.substance-item {
+    background-color: var(--cool-milky-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.substance-item h4 {
+    color: var(--green);
+    margin-bottom: 0.5rem;
+}
+
+
+/* Section: Project Gallery (Horizontal Images) */
+.project-gallery {
+    padding: var(--section-padding);
+}
+
+.gallery-grid {
+    /* Updated grid-template-columns to stack images vertically */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Animation for Brand Substance cards */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- New CSS for the Home Page --- */
+
+/* --- New CSS for Featured Projects Grid --- */
+.other-projects {
+    background-color: var(--cool-milky-white);
+    padding: var(--section-padding) 0;
+}
+
+.featured-project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.featured-card-item {
+    position: relative;
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 0;
+    transition: transform 0.3s ease;
+}
+
+.featured-card-item:hover {
+    transform: translateY(-5px);
+}
+
+.featured-card-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.featured-card-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay for Text & Button */
+.featured-card-item .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 110, 84, 0.7);
+    color: var(--cool-milky-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* This centers the content horizontally */
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    text-align: center;
+}
+
+.featured-card-item:hover .card-overlay {
+    opacity: 1;
+}
+
+.featured-card-item h3 {
+    color: var(--cool-milky-white);
+    font-size: 1.5rem;
+    margin-bottom: 1rem; /* Space between title and button */
+}
+
+/* Call to Action Button inside the card */
+.featured-card-item .btn {
+    align-self: center; /* This centers the button */
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+    transition-delay: 0.1s;
+}
+
+.featured-card-item:hover .btn {
+    transform: translateY(0);
+}
+
+/* Trust Builder Section */
+.trust-builder-section {
+    padding: 2rem 0;
+    background-color: #f8f0e8;
+}
+
+.trust-card {
+    background-color: var(--green);
+    color: var(--cool-milky-white);
+    padding: 3rem;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(45, 110, 84, 0.2);
+}
+
+.trust-card h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.trust-card p {
+    color: rgba(255, 246, 240, 0.9);
+    margin-bottom: 0;
+    line-height: 1.8;
+}
+
+
+/* Testimonials Section */
+.testimonials {
+    background-color: var(--cool-milky-white);
+    padding: var(--section-padding);
+}
+
+.testimonial-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.client-name {
+    font-weight: 500;
+    color: var(--dark-text);
+    margin-bottom: 0;
+}
+
+/* Final Call to Action Section */
+.cta-section {
+    background-color: var(--mild-yellow);
+    padding: 4rem 0;
+}
+
+.cta-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.cta-text h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta-text p {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    color: var(--body-text);
+}
+
+@media (max-width: 768px) {
+    .cta-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* --- Updated CSS for Single-Column Hero --- */
+.hero {
+    padding: 6rem 0;
+}
+
+.hero .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+}
+
+.subheading {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* On smaller screens */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- New CSS for the "About and Image" Section --- */
+.about-and-image {
+    padding: var(--section-padding) 0;
+    background-color: var(--cool-milky-white);
+}
+
+.about-and-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image-col img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-text-col h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* On smaller screens, stack the columns vertically */
+@media (max-width: 992px) {
+    .about-and-image-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image-col {
+        order: -1; /* This will place the image at the top on mobile */
+    }
+}
+
+/* --- New CSS for Horizontal Sliding Grid --- */
+.sliding-projects {
+    padding: var(--section-padding) 0;
+    overflow-x: hidden; /* This hides the scrollbar */
+    position: relative;
+}
+
+.projects-carousel {
+    display: flex;
+    gap: 1.5rem;
+    padding-left: 1.5rem; /* Aligns with the container padding */
+    padding-right: 1.5rem;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch; /* For smoother scrolling on iOS */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    
+    /* Hide scrollbar on modern browsers */
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar on Chrome, Safari, etc. */
+.projects-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-card {
+    flex: 0 0 300px; /* Each card has a fixed width of 300px */
+    position: relative;
+    border-radius: 0px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    line-height: 0;
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 110, 84, 0.7);
+    color: var(--cool-milky-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.carousel-card:hover .carousel-overlay {
+    opacity: 1;
+}
+
+.carousel-overlay h3 {
+    color: var(--cool-milky-white);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.carousel-overlay p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* --- New CSS for the Enquiry Page --- */
+
+.enquiry-form-section {
+    padding: var(--section-padding);
+}
+
+.contact-form-standalone {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .form-group-full {
+        grid-column: 1 / -1;
+    }
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group-full textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: var(--cool-milky-white);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--body-text);
+    
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group-full textarea:focus {
+    outline: none;
+    border-color: var(--green);
+    
+}
+
+.contact-form-standalone .btn {
+    width: auto;
+}
+
+/* --- Updated CSS for Checkbox Group --- */
+.checkbox-group {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: var(--cool-milky-white);
+}
+
+.checkbox-group legend {
+    font-size: 1rem; /* Matched to the font-size of other labels */
+    font-weight: 500; /* Matched to the font-weight of other labels */
+    margin-bottom: 0.5rem; /* Consistent spacing with other form fields */
+}
+
+.checkbox-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-option input[type="checkbox"] {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--body-text);
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.checkbox-option input[type="checkbox"]:checked {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+
+.checkbox-option input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--cool-milky-white);
+}
+
+.checkbox-option label {
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustment for checkbox options on smaller screens */
+@media (max-width: 576px) {
+    .checkbox-options {
+        flex-direction: column;
+    }
+}

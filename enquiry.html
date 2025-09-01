@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquire | Your Name</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo">Your Logo</a>
+                <button class="hamburger" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="enquiry.html" class="btn btn-accent">Enquire</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container text-center">
+                <h1 class="animate-on-scroll">Let's build something great.</h1>
+                <p class="subheading animate-on-scroll">I'd love to hear about your project! Fill out the form below and I'll be in touch as soon as possible.</p>
+            </div>
+        </section>
+
+        <section class="enquiry-form-section animate-on-scroll">
+            <div class="container">
+                <form class="contact-form-standalone" name="enquiry" method="POST" data-netlify="true">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group-full">
+                            <label for="name">What design service are you enquiring about?</label>
+                            <fieldset class="checkbox-group">
+                                <div class="checkbox-options">
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="service1" name="services[]" value="Logo design">
+                                        <label for="service1">Logo design</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="service2" name="services[]" value="Brand Identity design">
+                                        <label for="service2">Brand Identity design</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="service3" name="services[]" value="Business card">
+                                        <label for="service3">Packaging design</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="service4" name="services[]" value="Flyer design">
+                                        <label for="service4">Social media design</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="service5" name="services[]" value="Social Media Asset">
+                                        <label for="service5">Graphic design services (print materials)</label>
+                                    </div>
+                                    <div class="checkbox-option">
+                                        <input type="checkbox" id="service10" name="services[]" value="Other">
+                                        <label for="service10">Other</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="form-group-full">
+                            <label for="project-details">Tell me about your project</label>
+                            <textarea id="project-details" name="project-details" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group-full">
+                            <label for="budget">What is your budget?</label>
+                            <select id="budget" name="budget" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="< $1,000">< $1,000</option>
+                                <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+                                <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+                                <option value="> $5,000">> $5,000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Enquiry</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        </footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>
