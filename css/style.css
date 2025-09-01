@@ -59,13 +59,12 @@ img { max-width: 100%; display: block; }
 .site-header {
     background: transparent;
     padding: 1rem 0;
-    position: fixed; /* Changed from sticky */
+    position: fixed;
     width: 100%;
     z-index: 1000;
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* This class will hide the header */
 .header-hidden {
     transform: translateY(-100%);
 }
@@ -87,34 +86,37 @@ img { max-width: 100%; display: block; }
     color: var(--green);
 }
 
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
+/* This is the new rule for desktop navigation only */
+@media (min-width: 769px) {
+    .main-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
 
-.main-nav ul a {
-    color: var(--dark-text);
-    font-weight: 500;
-    padding: 0.5rem 0;
-    position: relative;
-}
+    .main-nav ul a {
+        color: var(--dark-text);
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+    }
 
-.main-nav ul a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--mild-pink);
-    transition: width 0.3s ease;
-}
+    .main-nav ul a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--mild-pink);
+        transition: width 0.3s ease;
+    }
 
-.main-nav ul a:hover::after {
-    width: 100%;
+    .main-nav ul a:hover::after {
+        width: 100%;
+    }
 }
-
 
 /* --- 3. Buttons --- */
 .btn {
@@ -1890,5 +1892,268 @@ section {
 @media (max-width: 576px) {
     .checkbox-options {
         flex-direction: column;
+    }
+}
+
+/* Responsive Fixes for Mobile */
+@media (max-width: 768px) {
+
+    /* Reduce padding on sections for a more compact look */
+    .hero, .about-and-image, .other-projects, .testimonials, .cta-section {
+        padding: 3rem 0;
+    }
+
+    /* Adjust heading and subheading font sizes */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    p, .subheading { font-size: 1rem; }
+
+    /* Hero section-specific adjustments */
+    .hero h1 { text-align: center; }
+    .subheading {
+        text-align: center;
+        padding: 0 1rem;
+        max-width: none;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Footer adjustments */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-socials {
+        justify-content: center;
+    }
+
+    /* Adjustments for the new two-column section */
+    .about-and-image-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .about-image-col {
+        order: -1;
+    }
+    .project-intro .details-grid {
+        grid-template-columns: 1fr; /* Stacks the items vertically */
+        gap: 1rem; /* Adds space between the stacked items */
+    }
+}
+
+/* Hamburger Menu & Mobile Navigation */
+.hamburger {
+    display: none;
+    width: 30px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--dark-text);
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+.hamburger.is-active span:nth-child(1) { transform: rotate(45deg); top: 50%; }
+.hamburger.is-active span:nth-child(2) { opacity: 0; }
+.hamburger.is-active span:nth-child(3) { transform: rotate(-45deg); bottom: 50%; }
+
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+    
+    .main-nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--green);
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+        gap: 3rem;
+        z-index: 999;
+    }
+
+    .main-nav ul.is-open {
+        transform: translateX(0);
+    }
+
+    .main-nav ul a {
+        color: var(--cool-milky-white);
+        font-size: 1.5rem;
+    }
+
+    .main-nav .btn-accent {
+        color: var(--dark-text) !important;
+        background-color: var(--cool-milky-white);
+    }
+}
+
+/* --- Custom Cursor Styles --- */
+/*body {
+    cursor: none; /* Hides the default cursor */
+/*}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px; /* Increased size of the outer circle */
+/*    height: 80px; /* Increased size of the outer circle */
+/*    border: 2px solid rgba(255, 255, 255, 0.4); /* Transparent white border */
+  /*  border-radius: 50%;
+    transform: translate(-50%, -50%); /* Centers the cursor on the pointer */
+/*    pointer-events: none; /* Allows clicks to pass through the cursor */
+/*    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease-out; /* Smooth transition for a "floaty" feel */
+/*}
+
+.custom-cursor-inner {
+    font-size: 1.8rem; /* Increased size of the heart icon */
+/*    transform: scale(0.8); /* Shrink it slightly */
+  /*  transition: transform 0.2s ease-in-out;
+}
+
+/* --- New CSS for Client Love Section (Project Page Testimonial) --- */
+.client-love-section {
+    padding: var(--section-padding);
+    background-color: var(--cool-milky-white);
+}
+
+.client-love-title {
+    color: var(--dark-text);
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.client-love-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Image Wrapper - Now smaller */
+.client-image-wrapper {
+    flex-shrink: 0;
+    width: 100%;
+    height: 150px; /* Reduced height on mobile */
+    overflow: hidden;
+    position: relative;
+    background-color: #f0edea;
+}
+
+.client-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Quote Content Area */
+.client-quote-content {
+    padding: 2.5rem;
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.review-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.client-info {
+    font-weight: 500;
+    color: var(--green);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+/* Desktop Layout for Client Love Card */
+@media (min-width: 769px) {
+    .client-love-card {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .client-image-wrapper {
+        width: 250px; /* Reduced width for the image column on desktop */
+        height: auto;
+        border-radius: 12px 0 0 12px;
+    }
+
+    .client-image-wrapper img {
+        border-radius: 12px 0 0 12px;
+    }
+
+    .client-quote-content {
+        flex-grow: 1;
+        padding: 3rem 4rem;
+    }
+}
+
+/* Responsive adjustment for general elements within this section */
+@media (max-width: 768px) {
+    .client-love-section {
+        padding: 3rem 0;
+    }
+    .client-love-title {
+        font-size: 2rem;
+    }
+    .quote-text {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .review-body {
+        text-align: left;
+    }
+    .client-info {
+        text-align: center;
     }
 }

@@ -82,3 +82,39 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(autoScroll);
     }
 });
+
+// --- 3. Hamburger Menu Toggle ---
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('is-active');
+    navMenu.classList.toggle('is-open');
+});
+
+
+
+// --- Custom Cursor Movement ---
+// document.addEventListener('DOMContentLoaded', () => {
+//     const customCursor = document.querySelector('.custom-cursor');
+//     if (!customCursor) return;
+
+//     let mouseX = 0;
+//     let mouseY = 0;
+//     let cursorX = 0;
+//     let cursorY = 0;
+
+//     window.addEventListener('mousemove', (e) => {
+//         mouseX = e.clientX;
+//         mouseY = e.clientY;
+//     });
+
+//     function animateCursor() {
+//         cursorX += (mouseX - cursorX) * 0.1;
+//         cursorY += (mouseY - cursorY) * 0.1;
+//         customCursor.style.transform = `translate(${cursorX - customCursor.offsetWidth / 2}px, ${cursorY - customCursor.offsetHeight / 2}px)`;
+//         requestAnimationFrame(animateCursor);
+//     }
+
+//     animateCursor();
+// });
