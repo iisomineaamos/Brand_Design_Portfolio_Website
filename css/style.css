@@ -10,7 +10,7 @@
     --body-text: #333333;
     --font-primary: 'Rubik', sans-serif;
     --container-width: 1140px;
-    --section-padding: 6rem 0;
+    --section-padding: 5rem 0;
 }
 
 *, *::before, *::after {
@@ -32,6 +32,9 @@ body {
 
 }
 
+body .project-page{
+    --section-padding: 1rem 0;
+}
 
 .container {
     max-width: var(--container-width);
@@ -80,10 +83,10 @@ img { max-width: 100%; display: block; }
     align-items: center;
 }
 
-.logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--green);
+.logo img {
+  width: 120px !important;   /* force width */
+  height: auto !important;   /* keep proportions */
+  display: block !important; /* avoid inline gaps */
 }
 
 /* This is the new rule for desktop navigation only */
@@ -147,6 +150,7 @@ img { max-width: 100%; display: block; }
     background-color: transparent;
     color: var(--green);
     border: 2px solid var(--green);
+ 
 }
 .btn-secondary:hover {
     background-color: var(--green);
@@ -617,8 +621,9 @@ section {
     max-width: 800px;
 }
 .project-intro h1 {
-    font-size: 2.5rem; /* This matches your other h2 headings */
+    font-size: 2rem; /* This matches your other h2 headings */
     margin-bottom: 0.5rem;
+    padding-top: 5rem;
 }
 
 .project-tagline {
@@ -685,7 +690,7 @@ section {
     align-items: center;
 }
 .logo-visual img {
-    max-width: 100%;
+    max-width: 70%;
     /* This is the subtle floating animation effect */
     animation: float-effect 6s ease-in-out infinite;
 }
@@ -924,9 +929,9 @@ section {
 
 /* --- New CSS for Full-Width Featured Project --- */
 
-/* .featured-project-fullwidth {
-    padding-bottom: 1.5rem;
-} */
+.featured-project-btn-container {
+    padding-top: 1.5rem;
+}
 
 .featured-project-link {
     display: block;
@@ -1130,6 +1135,7 @@ section {
 /* --- New CSS for Next Steps CTA Section --- */
 
 .next-steps-cta {
+    margin-top:6rem;
     background-color: var(--mild-pink);
     padding: var(--section-padding);
 }
@@ -1266,6 +1272,7 @@ section {
 /* Section 1: Hero */
 .about-hero {
     padding: var(--section-padding);
+    text-align: center
 }
 .about-hero-content {
     display: grid;
@@ -1273,14 +1280,17 @@ section {
     gap: 3rem;
     align-items: center;
 }
+
 @media(min-width: 992px) {
     .about-hero-content {
         grid-template-columns: 1fr 1fr;
     }
 }
+
 .about-hero-text h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem; /* This matches your other h2 headings */
+    margin-bottom: 0.5rem;
+    padding-top: 5rem;
 }
 .overlapping-images {
     position: relative;
@@ -1492,7 +1502,8 @@ section {
 }
 
 /* Overlay for Text & Button */
-.featured-card-item .card-overlay {
+/* I removed card-overlay here because it was not needed*/
+.featured-card-item{
     position: absolute;
     top: 0;
     left: 0;
@@ -1510,7 +1521,8 @@ section {
     text-align: center;
 }
 
-.featured-card-item:hover .card-overlay {
+/* I removed card-overlay here aswell*/
+.featured-card-item:hover{
     opacity: 1;
 }
 
@@ -1697,6 +1709,7 @@ section {
     padding: var(--section-padding) 0;
     overflow-x: hidden; /* This hides the scrollbar */
     position: relative;
+    margin-bottom: 3rem;
 }
 
 .projects-carousel {
@@ -1949,6 +1962,9 @@ section {
         grid-template-columns: 1fr; /* Stacks the items vertically */
         gap: 1rem; /* Adds space between the stacked items */
     }
+      :root {
+        --section-padding: 1rem 0; /* smaller padding on mobile */
+  }
 }
 
 /* Hamburger Menu & Mobile Navigation */
