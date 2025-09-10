@@ -36,6 +36,14 @@ body .project-page{
     --section-padding: 1rem 0;
 }
 
+body .passion-ProjectPage{
+    --section-padding: 0 0;
+}
+
+.PProjSec{
+    margin-top: 2rem;
+}
+
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -176,7 +184,7 @@ section {
     margin: 0 auto 1rem;
 }
 .subheading {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto 2rem;
 }
@@ -264,12 +272,22 @@ section {
     padding: 4rem 0;
     background-color: transparent;
 }
+
 .fun-fact-heading {
     color: var(--mild-pink);
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 1rem;
+}
+
+.pp-title-heading {
+    color: var(--mild-pink);
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
 }
 
 .beyond-design p {
@@ -346,7 +364,7 @@ section {
 }
 
 .package-content .price {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--dark-text);
     margin-bottom: 0.5rem;
@@ -901,8 +919,15 @@ section {
 /* --- New CSS for Trust-Builder Card --- */
 
 .trust-builder-section {
-    padding: 2rem 0;
-    background-color: #f8f0e8; /* Matches the testimonials bg color */
+    /* padding: 2rem 0;
+    background-color: #f8f0e8; Matches the testimonials bg color */
+    background-image: url("../images/Personal_Images/my-image3.jpg"); /* path to your image */
+    background-size: cover; /* make sure it covers the entire section */
+    background-position: center; /* keep the image centered */
+    background-repeat: no-repeat; /* prevent tiling */
+    padding: 5rem 0; /* keep your spacing */
+    color: #f8f0e8; /* optional: adjust text color for contrast */
+    min-height: 500px;
 }
 
 .trust-card {
@@ -1008,13 +1033,16 @@ section {
 .cta-section {
     background-color: var(--mild-yellow); /* Using one of your brand colors */
     padding: 4rem 0;
+    text-align: center; /* Centers text */
 }
 
 .cta-container {
     display: flex;
-    justify-content: space-between; /* Pushes items to opposite ends */
-    align-items: center;
+    justify-content: center;  /* Center horizontally */
+    /* justify-content: space-between; Pushes items to opposite ends */
+    align-items: center;   /* Center vertically */
     gap: 2rem; /* Adds space between items on smaller screens */
+    flex-direction: column;   /* Stack heading, paragraph, and button */
 }
 
 .cta-text h3 {
@@ -1590,7 +1618,7 @@ section {
 
 .quote {
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 1rem;
 }
@@ -2111,7 +2139,7 @@ section {
 
 .quote-text {
     font-style: italic;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--dark-text);
     line-height: 1.3;
@@ -2172,4 +2200,12 @@ section {
     .client-info {
         text-align: center;
     }
+}
+
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* optional for style */
+  display: block; /* removes weird inline spacing */
+  margin: 0 auto; /* centers if inside a container */
 }
