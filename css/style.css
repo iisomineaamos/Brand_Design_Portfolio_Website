@@ -278,8 +278,10 @@ section {
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+
 }
+
+
 
 .pp-title-heading {
     color: var(--mild-pink);
@@ -1607,6 +1609,12 @@ section {
 .testimonials {
     background-color: var(--cool-milky-white);
     padding: var(--section-padding);
+    background-image: url("../images/Personal_Images/my-image5.jpg"); /* path to your image */
+    background-size: cover; /* make sure it covers the entire section */
+    background-position: center; /* keep the image centered */
+    background-repeat: no-repeat; /* prevent tiling */
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .testimonial-card {
@@ -2208,4 +2216,92 @@ video {
   border-radius: 8px; /* optional for style */
   display: block; /* removes weird inline spacing */
   margin: 0 auto; /* centers if inside a container */
+}
+
+
+/* new  */
+/* --- Process Section --- */
+.process {
+  background: var(--cool-milky-white);
+  padding: var(--section-padding);
+  font-family: var(--font-primary);
+}
+
+.process-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--dark-text);
+  margin-bottom: 3rem;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.step {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: var(--green);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.step-heading {
+  font-size: 1.25rem;
+  color: var(--dark-text);
+  margin-bottom: 0.75rem;
+}
+
+.step-text {
+  font-size: 1rem;
+  color: var(--body-text);
+  line-height: 1.6;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 992px) {
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .process-title {
+    font-size: 1.75rem;
+  }
+
+  .step {
+    padding: 1.5rem;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
 }
