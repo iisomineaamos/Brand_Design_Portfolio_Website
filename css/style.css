@@ -1194,15 +1194,15 @@ section {
 
 /* Positioning for the top-left image */
 .deco-image-1 {
-    top: -2rem;
-    left: 2rem;
+    top: 3rem;
+    left: -7rem;
     transform: rotate(-15deg);
 }
 
 /* Positioning for the bottom-right image */
 .deco-image-2 {
-    bottom: -2rem;
-    right: 2rem;
+    bottom: -3rem;
+    right: -8rem;
     transform: rotate(15deg);
 }
 
@@ -1321,6 +1321,12 @@ section {
     font-size: 2rem; /* This matches your other h2 headings */
     margin-bottom: 0.5rem;
     padding-top: 5rem;
+    text-align: left;
+}
+
+.about-hero-text p {
+    margin-bottom: 0.5rem;
+    text-align: left;
 }
 .overlapping-images {
     position: relative;
@@ -1336,6 +1342,7 @@ section {
 .primary-image {
     position: relative;
     z-index: 2;
+    max-height: 350px;
 }
 .secondary-image {
     position: absolute;
@@ -1343,6 +1350,7 @@ section {
     bottom: 0;
     left: 0;
     transform: rotate(-10deg);
+    max-height: 400px;
 }
 
 
@@ -1357,6 +1365,7 @@ section {
 .two-column-layout {
     column-count: 1;
     column-gap: 3rem;
+    margin-bottom: 6rem;
 }
 @media(min-width: 768px) {
     .two-column-layout {
