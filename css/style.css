@@ -2325,3 +2325,52 @@ video {
     font-size: 1.2rem;
   }
 }
+
+
+/* thankyou for subscribing css */
+.thank-you-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* center vertically */
+  background-color: var(--cool-milky-white, #fff6f0);
+  padding: 20px;
+}
+
+.thank-you-content {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  padding: 40px 30px;
+}
+
+.thank-you-content h2 {
+  color: var(--green, #2d6e54);
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.thank-you-content p {
+  color: var(--body-text, #333333);
+  margin-bottom: 25px;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.thank-you-btn {
+  display: inline-block;
+  background: var(--green, #2d6e54);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.thank-you-btn:hover {
+  background: #21503d; /* darker green on hover */
+}
