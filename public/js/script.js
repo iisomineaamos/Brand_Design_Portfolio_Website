@@ -118,3 +118,114 @@ hamburger.addEventListener('click', () => {
 
 //     animateCursor();
 // });
+
+
+// firebase setup
+
+// Import Firebase SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+// Your Firebase config
+const firebaseConfig = {
+    apiKey: "AIzaSyBVWMgPXSlT2JV1WDuCJ7OeUMRE7Xogr8A",
+    authDomain: "brand-design-portfolio-site.firebaseapp.com",
+    projectId: "brand-design-portfolio-site",
+    storageBucket: "brand-design-portfolio-site.firebasestorage.app",
+    messagingSenderId: "743639388904",
+    appId: "1:743639388904:web:ac7711775b8fd1ef9c2f5d",
+    measurementId: "G-5Y1CM79K5D"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Handle form submission
+// document.getElementById("enquiryForm").addEventListener("submit", async (e) => {
+//     e.preventDefault();
+
+//     const name = document.getElementById("name").value;
+//     const email = document.getElementById("email").value;
+//     const services = Array.from(document.querySelectorAll("input[name='services']:checked")).map(cb => cb.value);
+//     const projectDetails = document.getElementById("projectDetails").value;
+//     const budget = document.getElementById("budget").value;
+//     const socialHandle = document.getElementById("socialHandle").value;
+
+//     try {
+//         await addDoc(collection(db, "enquiries"), {
+//             name,
+//             email,
+//             services,
+//             projectDetails,
+//             budget,
+//             socialHandle,
+//             submittedAt: new Date()
+//         });
+
+//         alert("Thanks for your enquiry! I'll be in touch soon.");
+//         e.target.reset();
+//     } catch (error) {
+//         console.error("Error saving enquiry:", error);
+//         alert("Oops! Something went wrong. Please try again.");
+//     }
+// });
+
+
+// Added the new firebase store for form collection and trying to remove formspree thank you page
+
+  const form = document.getElementById("enquiryForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const services = Array.from(document.querySelectorAll("input[name='services']:checked")).map(cb => cb.value);
+    const projectDetails = document.getElementById("projectDetails").value;
+    const budget = document.getElementById("budget").value;
+    const socialHandle = document.getElementById("socialHandle").value;
+
+    // 1️⃣ Save to Firebase
+    try {
+      await addDoc(collection(db, "enquiries"), {
+        name,
+        email,
+        services,
+        projectDetails,
+        budget,
+        socialHandle,
+        submittedAt: new Date()
+      });
+    } catch (err) {
+      console.error("Error saving to Firebase:", err);
+    }
+
+    // 2️⃣ Send to Formspree
+    try {
+      const formData = new FormData(form);
+      formData.append("_format", "json"); // ensures JSON response
+
+      const response = await fetch("https://formspree.io/f/xblabqrk", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        alert("Thanks for your enquiry! I'll be in touch soon.");
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        console.error("Formspree error:", errorData);
+        alert("Oops! Something went wrong sending the email.");
+      }
+    } catch (err) {
+      console.error("Formspree submission failed:", err);
+      alert("Oops! Something went wrong sending the email.");
+    }
+  });
+

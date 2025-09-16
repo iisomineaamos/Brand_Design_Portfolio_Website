@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="images/Personal_Images/SVG/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="images/Personal_Images/SVG/favicon.ico">
+    <link rel="icon" type="image/png" href="images/Personal_Images/SVG/submark.svg">
 
 </head>
 <body>
@@ -40,78 +42,98 @@
     <main>
         <section class="page-hero">
             <div class="container text-center">
-                <h1 class="animate-on-scroll">Let's build something great.</h1>
-                <p class="subheading animate-on-scroll">I'd love to hear about your project! Fill out the form below and I'll be in touch as soon as possible.</p>
+                <h1 class="animate-on-scroll">Your brand's next chapter starts here.</h1>
+                <p class="subheading animate-on-scroll">I'd love to hear about your project! Fill out the form below and I'll be in touch in within 2 days. If you don't get a message from me, please check your spam folder.</p>
             </div>
         </section>
 
         <section class="enquiry-form-section animate-on-scroll">
             <div class="container">
-                <form class="contact-form-standalone" name="enquiry" method="POST" data-netlify="true">
+                <form id="enquiryForm" class="contact-form-standalone">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="name">What should I call you? (your name)</label>
                             <input type="text" id="name" name="name" required>
                         </div>
+                
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-
+                
                         <div class="form-group-full">
-                            <label for="name">What design service are you enquiring about?</label>
+                            <label for="services">What design service are you enquiring about?</label>
                             <fieldset class="checkbox-group">
                                 <div class="checkbox-options">
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="service1" name="services[]" value="Logo design">
+                                        <input type="checkbox" id="service1" name="services" value="Logo design">
                                         <label for="service1">Logo design</label>
                                     </div>
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="service2" name="services[]" value="Brand Identity design">
+                                        <input type="checkbox" id="service2" name="services" value="Brand Identity design">
                                         <label for="service2">Brand Identity design</label>
                                     </div>
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="service3" name="services[]" value="Business card">
+                                        <input type="checkbox" id="service3" name="services" value="Packaging design">
                                         <label for="service3">Packaging design</label>
                                     </div>
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="service4" name="services[]" value="Flyer design">
+                                        <input type="checkbox" id="service4" name="services" value="Social media design">
                                         <label for="service4">Social media design</label>
                                     </div>
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="service5" name="services[]" value="Social Media Asset">
+                                        <input type="checkbox" id="service5" name="services"
+                                            value="Graphic design services (print materials)">
                                         <label for="service5">Graphic design services (print materials)</label>
                                     </div>
                                     <div class="checkbox-option">
-                                        <input type="checkbox" id="service10" name="services[]" value="Other">
+                                        <input type="checkbox" id="service10" name="services" value="Other">
                                         <label for="service10">Other</label>
                                     </div>
                                 </div>
                             </fieldset>
                         </div>
+                
                         <div class="form-group-full">
-                            <label for="project-details">Tell me about your project</label>
-                            <textarea id="project-details" name="project-details" rows="5" required></textarea>
+                            <label for="projectDetails">Tell me about your project</label>
+                            <textarea id="projectDetails" name="projectDetails" rows="5" required></textarea>
                         </div>
+                
                         <div class="form-group-full">
-                            <label for="budget">How much is this project worth to your business? ( your budget or investment)</label>
+                            <label for="budget">How much is this project worth to your business? (budget)</label>
                             <select id="budget" name="budget" required>
                                 <option value="" disabled selected>Select an option</option>
-                                <option value="< $1,000">< $1,000</option>
+                                <option value="< $1,000">
+                                    < $1,000</option>
                                 <option value="$1,000 - $3,000">$1,000 - $3,000</option>
                                 <option value="$3,000 - $5,000">$3,000 - $5,000</option>
                                 <option value="> $5,000">> $5,000</option>
                             </select>
                         </div>
-                    </div>
+                
                         <div class="form-group-full">
-                            <label for="project-details">What's your social media handle?</label>
-                            <textarea id="project-details" name="project-details" rows="5" required></textarea>
+                            <label for="socialHandle">What's your social media handle?</label>
+                            <input type="text" id="socialHandle" name="socialHandle">
                         </div>
+                    </div>
+
+                    <!-- Hidden input for Formspree JSON response -->
+                    <input type="hidden" name="_format" value="json">
+
                     <button type="submit" class="btn btn-primary">Send Enquiry</button>
                 </form>
+               
+
             </div>
         </section>
+        <!-- <section>
+            <div class="direct-email">
+                <a href="mailto:amosiisominea@gmail.com" title="Send me an email directly">
+                    <i class="fa-solid fa-envelope"></i> Email Me Directly
+                </a>
+            </div>
+        
+        </section> -->
     </main>
 
     <footer class="site-footer">
@@ -162,6 +184,6 @@
     <!-- <div class="custom-cursor">
         <span class="custom-cursor-inner">❤️</span>
     </div> -->
-    <script src="js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
 </body>
 </html>

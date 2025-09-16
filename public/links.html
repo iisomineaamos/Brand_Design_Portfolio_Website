@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Links | iclassicdesigns</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/Personal_Images/SVG/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="images/Personal_Images/SVG/favicon.ico">
+  <link rel="icon" type="image/png" href="images/Personal_Images/SVG/submark.svg">
+
+
+  <style>
+
+    body {
+      margin-top: 6rem;
+      padding: 0;
+      font-family: var(--font-primary);
+      background: var(--green);
+      color: var(--dark-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .logo {
+      margin-bottom: 2.5rem;
+    }
+
+    .logo img {
+      max-width: 120px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--cool-milky-white);
+      margin-bottom: 2rem;
+    }
+
+    
+    /* Link Cards */
+    .link-card {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      background: var(--cool-milky-white);
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 0.75rem 0;
+      text-decoration: none;
+      color: var(--dark-text);
+      font-weight: 500;
+      display: block;
+      transition: transform 0.2s ease;
+      z-index: 0.8;
+    }
+
+    /* Mild-yellow "shadow" */
+    .link-card::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 100%;
+      height: 100%;
+      background: var(--mild-yellow);
+      border-radius: 10px;
+      z-index: -1;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      background: var(--mild-yellow);
+      color: var(--dark-text);
+    }
+    .rights{
+      margin-top: 2rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--cool-milky-white);
+    }
+
+    
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+    <a href="index.html" class="logo">
+        <img src="images/Personal_Images/SVG/LightLogo.svg" alt="my brand logo design">
+    </a>
+
+  <!-- Page Title -->
+
+  <!-- Links -->
+  <a href="index.html" class="link-card">Visit Website</a>
+  <a href="enquiry.html" class="link-card">Enquire</a>
+  <a href="https://iclassicdesigns.gumroad.com" class="link-card">Shop and FREEBIES</a>
+
+  <!-- Footer -->
+  <footer>
+        <div class="footer-socials">
+            <a href="https://www.tiktok.com/@iclassicdesigns" target="_blank" aria-label="TikTok Profile"><i
+                class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/iclassicdesigns/" target="_blank" aria-label="Instagram Profile"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://pin.it/1x8OdBf" target="_blank" aria-label="Pinterest Profile"><i
+                class="fa-brands fa-pinterest"></i></a>
+            <a href="https://www.behance.net/amosiisominea" target="_blank" aria-label="Behance Profile"><i
+                class="fa-brands fa-behance"></i></a>
+        </div>
+    <div class="rights">
+        © 2025 iclassicdesigns
+    </div>
+        
+  </footer>
+</body>
+</html>

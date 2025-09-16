@@ -2374,3 +2374,23 @@ video {
 .thank-you-btn:hover {
   background: #21503d; /* darker green on hover */
 }
+
+
+/* for direct email */
+/* .direct-email {
+    margin-top: 20px;
+    text-align: center;
+} */
+
+/* .direct-email a {
+    text-decoration: none;
+    color: #2d6e54; your brand green */
+    /* font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+} */
+
+/* .direct-email a:hover {
+    color: #fdc66f; your brand yellow */
+/* } */

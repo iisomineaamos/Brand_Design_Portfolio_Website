@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /enquiries/{docId} {
+      allow read: if false; // prevent anyone from reading publicly
+      allow create: if true; // allow anyone to submit the form
+    }
+  }
+}
